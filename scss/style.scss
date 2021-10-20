@@ -1,0 +1,41 @@
+$breakpoints: (
+  breakpoint-small: 768px,
+  breakpoint-medium: 992px,
+  breakpoint-large: 1200px
+);
+
+// BEGIN (write your solution here)
+@mixin media($breakpoint: small, $max-width: 300px) {
+ 
+  @if ($breakpoint == small or $breakpoint == medium or $breakpoint == large) {
+    @media screen and (max-width: map-get($breakpoints, breakpoint-#{$breakpoint})) {
+        @content;
+    }  
+  }
+  @else{   
+    @media screen and (max-width: $max-width) {
+      @content;
+  }  
+  } 
+}
+
+.card {
+  width: 25%;
+  
+  @include media(large) {
+    width: 33%;
+  }
+ 
+  @include media(medium) {
+    width: 50%;
+  }
+ 
+  @include media(small) {
+    width: 100%;
+  }
+  
+  @include media(custom, 300px) {
+    display: none;
+  }
+}
+// END

@@ -1,0 +1,24 @@
+//! Число Фибоначи
+  @function fib($number) {
+  @if ($number == 0 or $number == 1) {
+   @return $number;
+  } @else {
+    @return fib($number - 2) + fib($number - 1);
+  } }
+
+//! Функция, которая переводит px в rem
+@function px-to-rem($list) {  
+  $list-rem: ();
+
+  @each $px-i in $list {
+    $rem-i: $px-i / 10px;
+    $list-rem: append($list-rem, #{$rem-i}rem);}    
+
+  @return $list-rem;}
+
+  
+
+//! Вывод на экран
+.class {
+  content: fib(1);
+}
